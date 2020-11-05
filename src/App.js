@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { Fragment } from 'react'
+import NavBar from './components/NavBar'
+import './App.css';
+import HomePage from './containers/HomePage'
+import {
+  BrowserRouter,
+  Route
+} from 'react-router-dom';
+// import MoviesContainer from './containers/MoviesContainer';
+
+const App = () => {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Fragment>
+      <NavBar />
+        <Route exact path='/' component={HomePage} />
+ 
+      </Fragment> 
+    </BrowserRouter>
   );
+
+
+
 }
 
 export default App;
