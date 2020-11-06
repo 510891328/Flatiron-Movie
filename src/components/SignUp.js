@@ -1,4 +1,5 @@
 import React from 'react'
+// import { Redirect } from 'react-router-dom'
 
 export default class SignUp extends React.Component {
   state = {
@@ -11,6 +12,7 @@ export default class SignUp extends React.Component {
     e.preventDefault();
     this.props.signUp({name: this.state.name, username:this.state.username, password:this.state.password})
     this.setState({name: '', username: '', password: ''})
+    this.props.routerProps.history.push('/')
   }
 
   handleChange = (e) => {
@@ -18,6 +20,7 @@ export default class SignUp extends React.Component {
   }
 
   render(){
+    console.log(this.props.routerProps.history);
     return(
       <form onSubmit={this.handleSubmit}>
         <label>Username:
