@@ -7,7 +7,8 @@ import {
   BrowserRouter,
   Route
 } from 'react-router-dom';
-// import MoviesContainer from './containers/MoviesContainer';
+import MoviesContainer from './containers/MoviesContainer';
+
 
 const App = () => {
   
@@ -15,8 +16,8 @@ const App = () => {
     <BrowserRouter>
       <Fragment>
       <NavBar />
-        <Route exact path='/' component={HomePage} />
- 
+        <Route exact path='/home' component={HomePage} />
+        <Route path='/movies' component={MoviesContainer} />
       </Fragment> 
     </BrowserRouter>
   );

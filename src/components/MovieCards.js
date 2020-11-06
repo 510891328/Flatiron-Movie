@@ -1,13 +1,14 @@
 import React from 'react'
-import Link from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const MovieCards = ({ movie }) => {
 
   return (
-  <div onClick={null}>
-    <h3 >{movie.title}</h3>
-  </div> 
-  
+  <NavLink to={`/movies/${movie.id}`}>
+    <div onClick={null}>
+      <h3 >{movie.title}</h3>
+    </div> 
+  </NavLink>
   )
 }
 
