@@ -7,10 +7,8 @@ const HomePage = () => {
     <div>
       <h1>
         This is HomePage!
-        <BrowserRouter>
-          <Route path="/movies" components={MoviesContainer}/>
-        </BrowserRouter>
       </h1>
+      <MoviesContainer />
     </div>
   )
 }

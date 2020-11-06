@@ -28,7 +28,6 @@ class MoviesContainer extends Component {
     return (
 
       <Switch>
-
        <Route path="/movies/:id" render={(routerProps) => {
          let id = parseInt(routerProps.match.params.id)
          let foundMovie
@@ -46,7 +45,7 @@ class MoviesContainer extends Component {
          )
         }} />
 
-       <Route path="/movies" render={() => {
+       <Route path="/" render={() => {
            return (
                <div>
                    {this.state.movies.length > 0 ? this.renderMovies() : <h1>LOADING</h1>}

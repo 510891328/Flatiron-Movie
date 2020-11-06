@@ -12,8 +12,8 @@ const App = () => {
     <BrowserRouter>
       <Fragment>
       <NavBar />
-        <Route exact path='/' component={HomePage} />
         <Route path='/movies' component={MoviesContainer} />
+        <Route exact path='/' component={HomePage} />
       </Fragment>
     </BrowserRouter>
   );
