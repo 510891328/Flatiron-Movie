@@ -10,7 +10,12 @@ class MoviesContainer extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/movies')
+    fetch('http://localhost:3000/movies', {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${this.props.user.jwt}`
+      }
+    })
     .then(resp => resp.json())
     .then(movies => {
       this.setState({ movies: movies })
@@ -24,34 +29,34 @@ class MoviesContainer extends Component {
   }
 
   render() {
-
+    console.log(this.props)
     return (
 
-      <Switch>
-       <Route path="/movies/:id" render={(routerProps) => {
-         let id = parseInt(routerProps.match.params.id)
-         let foundMovie
-         if (this.state.movies.length > 0) {
-             foundMovie = this.state.movies.find(el => el.id === id)
-         }
-         return (
-             <>
-                 {
-                     this.state.movies.length > 0 ? <MovieShowPage movie={foundMovie}  />
-                         :
-                         <h1>Loading</h1>
-                 }
-             </>
-         )
-        }} />
+    <Switch>
+      <Route path="/movies/:id" render={(routerProps) => {
+        let id = parseInt(routerProps.match.params.id)
+        let foundMovie
+        if (this.state.movies.length > 0) {
+            foundMovie = this.state.movies.find(el => el.id === id)
+        }
+        return (
+          <>
+            {
+              this.state.movies.length > 0 ? <MovieShowPage movie={foundMovie}  />
+                :
+                <h1>Loading</h1>
+            }
+          </>
+        )
+      }} />
 
-       <Route path="/" render={() => {
-           return (
-               <div>
-                   {this.state.movies.length > 0 ? this.renderMovies() : <h1>LOADING</h1>}
-               </div>
-           )
-       }} />
+      <Route path="/" render={() => {
+          return (
+              <div>
+                  {this.state.movies.length > 0 ? this.renderMovies() : <h1>LOADING</h1>}
+              </div>
+          )
+      }} />
 
       </Switch>
     )

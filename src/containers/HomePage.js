@@ -1,13 +1,14 @@
 import React from 'react'
 import MoviesContainer from './MoviesContainer'
 
-const HomePage = () => {
+const HomePage = (props) => {
+  console.log(props.user.jwt)
   return (
     <div>
       <h1>
         This is HomePage!
       </h1>
-      <MoviesContainer />
+      <MoviesContainer user={props.user}/>
     </div>
   )
 }

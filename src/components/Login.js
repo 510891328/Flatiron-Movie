@@ -13,10 +13,16 @@ class  LoginForm extends React.Component {
 
   handleSubmit =  (e) => {
     e.preventDefault()
+    this.props.logIn(this.state)
+    this.setState({
+      username: "",
+      password: ""
+    })
   }
+  
 
   render() {
-    console.log(this.state.username)
+    
     return (
       
       <>
