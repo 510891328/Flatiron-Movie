@@ -3,7 +3,6 @@ import React from 'react'
 
 
 const MovieShowPage = ({ movie }) => {
-  console.log(movie);
   return (
   <>
   <h1>Hello! Here are details for {movie.title}</h1>

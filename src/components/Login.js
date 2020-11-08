@@ -11,20 +11,20 @@ class  LoginForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSubmit =  (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
-    this.props.logIn(this.state)
+    this.props.logIn(this.state, this.props.routerProps)
+    console.log(this.props.routerProps);
+    // this.state.login ? this.props.routerProps.history.push('/') : console.log('invalid')
     this.setState({
       username: "",
       password: ""
     })
   }
-  
 
   render() {
-    
     return (
-      
+
       <>
         <form onSubmit={this.handleSubmit}>
           <label for="username" >Username</label>

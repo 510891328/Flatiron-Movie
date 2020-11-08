@@ -10,12 +10,7 @@ class MoviesContainer extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/movies', {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${this.props.user.jwt}`
-      }
-    })
+    fetch('http://localhost:3000/movies')
     .then(resp => resp.json())
     .then(movies => {
       this.setState({ movies: movies })
@@ -29,7 +24,6 @@ class MoviesContainer extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
 
     <Switch>

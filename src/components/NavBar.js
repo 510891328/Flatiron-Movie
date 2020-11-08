@@ -10,7 +10,7 @@ const NavBar = (props) => {
   return (
     <div className="navbar">
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/movie">Movies</NavLink>
+      <NavLink to="/movies">Movies</NavLink>
       {
         props.user ?
         <NavLink to="/" onClick={logOutHandler}>Log Out</NavLink>

@@ -20,7 +20,6 @@ export default class SignUp extends React.Component {
   }
 
   render(){
-    console.log(this.props.routerProps.history);
     return(
       <form onSubmit={this.handleSubmit}>
         <label>Username:

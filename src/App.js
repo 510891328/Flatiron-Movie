@@ -11,10 +11,9 @@ import SignUp from './components/SignUp'
 class App extends React.Component {
 
   state = {
-    loggedIn: false,
-    user: null,
-    testingState: "TEST STATE "
-  }
+        user: null,
+        testingState: "TEST STATE",
+      }
 
   signUp = (user) => {
     const options = {
@@ -31,22 +30,25 @@ class App extends React.Component {
       .then(user => this.setState({ user: user }))
   }
 
-  logIn = (user) => {
+  logIn = (user, routerProps) => {
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
         "content-type": "application/json",
         accepts: "application/json"
-        
       },
       body: JSON.stringify({user: user})
     })
     .then(resp => resp.json())
     .then(user => {
-      this.setState({ user: user })
-    })
+      if(user.message){
+        console.log('invalid');
+      }else{
+        this.setState({ user: user })
+        routerProps.history.push('/')
+      }
 
-    
+    })
   }
 
   logOutHandler = () => {
@@ -55,23 +57,20 @@ class App extends React.Component {
 
 
   render () {
-    console.log(this.state.user);
     return (
+
       <BrowserRouter>
         <Fragment>
 
         <NavBar user={this.state.user} logOutHandler={this.logOutHandler}/>
           <Route path='/movies' render={ routerProps => <MoviesContainer user={this.state.user} routerProps={routerProps} testState={this.state.testingState}/>} />
           <Route exact path='/' render={ routerProps => <HomePage user={this.state.user} testState={this.state.testingState}/>} />
-          <Route path ='/login' render={ routerProps => <Login routerProps={routerProps} logIn={this.logIn}/> }/>
+          <Route path ='/login' render={ routerProps => <Login routerProps={routerProps} logIn={this.logIn} /> }/>
           <Route path ='/signup' render={ routerProps => <SignUp signUp={this.signUp} routerProps={routerProps}/> } />
         </Fragment>
       </BrowserRouter>
     );
   }
-
-
-
 
 }
 
