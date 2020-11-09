@@ -1,28 +1,12 @@
-
+import { useLocation } from 'react-router-dom'
 import React from 'react'
 
 
-const MovieShowPage = ({ movie, user }) => {
-  // const addMovie = () => {
-  //   fetch('http://localhost:3000/purchase', {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //       accepts: "application/json",
-  //       Authorization: `Bearer ${user.jwt}`
-  //     },
-  //     body: JSON.stringify( { purchases: movie.id, token: user.jwt} )
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(console.log)
-  // }
-  //
-  // const redirect = () => {
-  //   console.log("redirect");
-  // }
+const MovieShowPage = (props, state) => {
+  const movie = props.movie
+  const user = props.user
 
   const handlePurchase = () => {
-    console.log(user)
     if(user){
       fetch('http://localhost:3000/purchase', {
         method: "POST",
@@ -39,6 +23,7 @@ const MovieShowPage = ({ movie, user }) => {
       console.log('not signin');
     }
   }
+  console.log(useLocation().state.purchased);
 
   return (
   <>
@@ -65,7 +50,7 @@ const MovieShowPage = ({ movie, user }) => {
           movie.metascore === 'N/A' ? null : <li>Metascore: {movie.metascore}/100</li>
         }
       </ul>
-      <button onClick={handlePurchase}>Buy Movie</button>
+      {useLocation().state.purchased? null :<button onClick={handlePurchase}>Buy Movie</button>}
     </div>
   </>
   )

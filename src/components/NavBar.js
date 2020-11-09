@@ -13,7 +13,10 @@ const NavBar = (props) => {
       <NavLink to="/movies">Movies</NavLink>
       {
         props.user ?
+        <>
+        <NavLink to="/purchase">Purchase</NavLink>
         <NavLink to="/" onClick={logOutHandler}>Log Out</NavLink>
+        </>
         :
       <>
         <NavLink to="/login">Login</NavLink>
