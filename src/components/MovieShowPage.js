@@ -2,7 +2,22 @@
 import React from 'react'
 
 
-const MovieShowPage = ({ movie }) => {
+const MovieShowPage = ({ movie, user }) => {
+
+  const handlePurchase = () => {
+    console.log(user)
+    fetch('http://localhost:3000/purchase', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify( { purchases: movie.id, token: user.jwt} )
+    })
+    .then(resp => resp.json())
+    .then(console.log)
+  }
+
   return (
   <>
   <h1>Hello! Here are details for {movie.title}</h1>
@@ -28,6 +43,7 @@ const MovieShowPage = ({ movie }) => {
           movie.metascore === 'N/A' ? null : <li>Metascore: {movie.metascore}/100</li>
         }
       </ul>
+      <button onClick={handlePurchase}>Buy Movie</button>
     </div>
   </>
   )

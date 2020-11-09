@@ -36,7 +36,7 @@ class MoviesContainer extends Component {
         return (
           <>
             {
-              this.state.movies.length > 0 ? <MovieShowPage movie={foundMovie}  />
+              this.state.movies.length > 0 ? <MovieShowPage movie={foundMovie} user={this.props.user} />
                 :
                 <h1>Loading</h1>
             }

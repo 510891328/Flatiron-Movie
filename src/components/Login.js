@@ -14,8 +14,7 @@ class  LoginForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.logIn(this.state, this.props.routerProps)
-    console.log(this.props.routerProps);
-    // this.state.login ? this.props.routerProps.history.push('/') : console.log('invalid')
+
     this.setState({
       username: "",
       password: ""
