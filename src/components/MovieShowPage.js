@@ -1,10 +1,27 @@
 import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import React from 'react'
 
 
 const MovieShowPage = (props, state) => {
+
+  const [input, setInput] = useState('')
   const movie = props.movie
   const user = props.user
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/movies/${movie.id}/reviews`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${user.jwt}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(console.log)
+  }, [])
 
   const handlePurchase = () => {
     if(user){
@@ -15,7 +32,7 @@ const MovieShowPage = (props, state) => {
           accepts: "application/json",
           Authorization: `Bearer ${user.jwt}`
         },
-        body: JSON.stringify( { movie: movie.id, token: user.jwt} )
+        body: JSON.stringify( { movie: movie.id, token: user.jwt } )
       })
       .then(resp => resp.json())
       .then(console.log)
@@ -23,7 +40,7 @@ const MovieShowPage = (props, state) => {
       console.log('not signin');
     }
   }
-  console.log(useLocation().state.purchased);
+  
 
   return (
   <>
