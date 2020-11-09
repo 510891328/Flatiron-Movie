@@ -3,19 +3,41 @@ import React from 'react'
 
 
 const MovieShowPage = ({ movie, user }) => {
+  // const addMovie = () => {
+  //   fetch('http://localhost:3000/purchase', {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       accepts: "application/json",
+  //       Authorization: `Bearer ${user.jwt}`
+  //     },
+  //     body: JSON.stringify( { purchases: movie.id, token: user.jwt} )
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(console.log)
+  // }
+  //
+  // const redirect = () => {
+  //   console.log("redirect");
+  // }
 
   const handlePurchase = () => {
     console.log(user)
-    fetch('http://localhost:3000/purchase', {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        accepts: "application/json"
-      },
-      body: JSON.stringify( { purchases: movie.id, token: user.jwt} )
-    })
-    .then(resp => resp.json())
-    .then(console.log)
+    if(user){
+      fetch('http://localhost:3000/purchase', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          accepts: "application/json",
+          Authorization: `Bearer ${user.jwt}`
+        },
+        body: JSON.stringify( { movie: movie.id, token: user.jwt} )
+      })
+      .then(resp => resp.json())
+      .then(console.log)
+    }else{
+      console.log('not signin');
+    }
   }
 
   return (
