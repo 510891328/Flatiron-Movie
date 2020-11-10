@@ -1,6 +1,6 @@
 import React from 'react'
 import Purchases from './Purchases'
-import UserInfo from '../components/UserInfo'
+import UserInfo from './UserInfo'
 export default class Profile extends React.Component {
   
   render(){

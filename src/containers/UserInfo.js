@@ -1,10 +1,11 @@
 import React from 'react'
-import Reviews from './Reviews'
+import ProfileReview from '../components/ProfileReview'
 
 export default class UserInfo extends React.Component {
   state = {
     reviews: []
   }
+
   componentDidMount(){
     fetch(`http://localhost:3000/users/${this.props.user.user.id}/reviews`, {
       method: 'GET',
@@ -14,8 +15,24 @@ export default class UserInfo extends React.Component {
     .then(reviews => this.setState({reviews: reviews}))
   }
 
-  editHandler = () => {
-
+  editHandler = (id, content) => {
+    
+    fetch(`http://localhost:3000/reviews/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        Authorization: `Bearer ${this.props.user.jwt}`
+      },
+      body: JSON.stringify( {content: content} )
+    })
+    .then(resp => resp.json())
+    .then(editedReview =>  {
+      let newArray = [...this.state.reviews]
+      let foundReview = newArray.find(review => review.id === id)
+      newArray[newArray.indexOf(foundReview)] = editedReview
+      this.setState({ reviews: newArray })
+    })
   }
 
   deleteHandler = (id) => {
@@ -32,15 +49,7 @@ export default class UserInfo extends React.Component {
   }
 
   renderReviews = () => {
-    return this.state.reviews.map( review => {
-      return(
-        <div>
-          <span>{review.movie.title}:{review.content} created:{review.created_at}</span>
-          <button onClick={this.editHandler}>Edit</button>
-          <button onClick={() => {this.deleteHandler(review.id)} }>Delete</button>
-        </div>
-      )
-    })
+    return this.state.reviews.map(review => <ProfileReview key={review.id} review={review} deleteHandler={this.deleteHandler} editHandler={this.editHandler}/>)
   }
 
   render(){
