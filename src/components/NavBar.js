@@ -14,7 +14,7 @@ const NavBar = (props) => {
       {
         props.user ?
         <>
-        <NavLink to="/purchase">Purchase</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/" onClick={logOutHandler}>Log Out</NavLink>
         </>
         :

@@ -16,7 +16,6 @@ class Purchases extends React.Component {
     return this.state.allPurchase.map(purchase => <MovieCards key={purchase.id} movie={purchase} purchased />)
   }
   render(){
-    console.log(this.state.allPurchase);
     return(this.renderMovies())
   }
 }

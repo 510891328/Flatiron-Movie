@@ -17,7 +17,7 @@ const MovieShowPage = (props) => {
     fetch(`http://localhost:3000/movies/${movie.id}/reviews`)
     .then(resp => resp.json())
     .then(review => setReviews(review))
-  }, [])
+  },[])
 
   const handlePurchase = () => {
     if(user){
@@ -62,13 +62,13 @@ const MovieShowPage = (props) => {
     .then(review => {
       setReviews(previousReviews => [...previousReviews, review])
     })
-    
+    setInput('')
   }
-  
+
   const renderReviews = () => {
     return reviews.map(review => <Reviews review={review} key={review.id} />)
   }
-  
+
   return (
   <>
   <h1>Hello! Here are details for {movie.title}</h1>
@@ -98,16 +98,16 @@ const MovieShowPage = (props) => {
       <ol>{renderReviews()}</ol>
       {useLocation().state.purchased ? null : <button onClick={handlePurchase}>Buy Movie</button>}
       {useLocation().state.purchased ? <button onClick={handleReview}>Write Review</button> : null}
-    {formStatus ?         
+    {formStatus ?
       <form onSubmit={reviewSubmitHandler}>
         <input type="text-area" value={input} name='content' onChange={changeHandler}/>
         <button type="submit">Submit Review</button>
-      </form> 
-      : 
+      </form>
+      :
       null
     }
     </div>
-    
+
   </>
   )
 }

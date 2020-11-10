@@ -3,11 +3,11 @@ import React, { Fragment } from 'react'
 import NavBar from './components/NavBar'
 import './App.css';
 import HomePage from './containers/HomePage'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import MoviesContainer from './containers/MoviesContainer';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import Purchases from './containers/Purchases'
+import Profile from './containers/Profile'
 
 class App extends React.Component {
 
@@ -55,19 +55,16 @@ class App extends React.Component {
     this.setState({ user: null })
   }
 
-
   render () {
     return (
-
       <BrowserRouter>
         <Fragment>
-
-        <NavBar user={this.state.user} logOutHandler={this.logOutHandler}/>
-          <Route path='/purchase' render={ routerProps => <Purchases user={this.state.user} routerProps={routerProps} />} />
+          <NavBar user={this.state.user} logOutHandler={this.logOutHandler}/>
           <Route path='/movies' render={ routerProps => <MoviesContainer user={this.state.user} routerProps={routerProps} />} />
+          <Route path='/login' render={ routerProps => <Login routerProps={routerProps} logIn={this.logIn} /> }/>
+          <Route path='/signup' render={ routerProps => <SignUp signUp={this.signUp} routerProps={routerProps}/> } />
           <Route exact path='/' render={ routerProps => <HomePage user={this.state.user} />} />
-          <Route path ='/login' render={ routerProps => <Login routerProps={routerProps} logIn={this.logIn} /> }/>
-          <Route path ='/signup' render={ routerProps => <SignUp signUp={this.signUp} routerProps={routerProps}/> } />
+          {this.state.user? <Route path='/profile' render={ routerProps => <Profile user={this.state.user} routerProps={routerProps} /> } />: <Redirect to="/login" />}
         </Fragment>
       </BrowserRouter>
     );
