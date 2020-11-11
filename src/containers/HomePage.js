@@ -5,8 +5,9 @@ const HomePage = (props) => {
   return (
     <div>
       <h1>
-        This is HomePage!
+        Welcome to MovieSpace!
       </h1>
+      <hr/>
       <MoviesContainer user={props.user}/>
     </div>
   )

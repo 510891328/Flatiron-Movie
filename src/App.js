@@ -12,8 +12,8 @@ import Profile from './containers/Profile'
 class App extends React.Component {
 
   state = {
-        user: null
-      }
+    user: null
+  }
 
   signUp = (user) => {
     const options = {
