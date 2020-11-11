@@ -1,13 +1,14 @@
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import React from 'react';
 import Reviews from './Reviews'
-import React from 'react'
 import PopUp from './PopUp'
 
+
 const MovieShowPage = (props) => {
-  const [pop, setPop] = useState(false)
   const [input, setInput] = useState('')
+  const [clicked, setClicked] = useState(false)
   const [message, setMessage] = useState('')
   const [reviews, setReviews] = useState([])
   const [formStatus, setFormStatus] = useState(false)
@@ -34,26 +35,35 @@ const MovieShowPage = (props) => {
       })
       .then(resp => resp.json())
       .then(movie => {
-        setPop(true)
+        setClicked(true)
         if(movie.message){
-          setMessage(movie.message)
+          setMessage("You already own this movie!")
+
         }else{
-          setMessage('purchased')
+          setMessage("Thank you for your purchase! Enjoy!")
         }
       })
     }else{
-      console.log('Not SignIn');
+      setClicked(true)
+      setMessage("You must be logged in to buy this movie!")
     }
   }
 
+  const closePopUp = () => {
+    setClicked(false)
+  }
+
+
   const handleReview = () => {
     setFormStatus(!formStatus)
-    console.log(formStatus)
+  
   }
 
   const changeHandler = (e) => {
     setInput(e.target.value)
   }
+
+
 
   const reviewSubmitHandler = (e) => {
     e.preventDefault()
@@ -79,6 +89,7 @@ const MovieShowPage = (props) => {
 
   return (
   <>
+  {clicked ? <PopUp routerProps={props.routerProps} user={user} message={message} closePopUp={closePopUp}/> : null}
   <hr/>
     <div>
       <div className="left">
@@ -106,7 +117,7 @@ const MovieShowPage = (props) => {
       <ol>{renderReviews()}</ol>
       {useLocation().state.purchased ? null : <button onClick={handlePurchase}>Buy Movie</button>}
       {useLocation().state.purchased ? <button onClick={handleReview}>Write Review</button> : null}
-      {pop? <><h1>{message}</h1> <button>X</button></> :null}
+      
     {formStatus ?
       <form onSubmit={reviewSubmitHandler}>
         <input type="textarea" value={input} name='content' onChange={changeHandler}/>

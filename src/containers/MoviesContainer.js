@@ -113,7 +113,7 @@ class MoviesContainer extends Component {
   }
 
   render() {
-
+  
     return (
 
         <Switch>
@@ -126,7 +126,7 @@ class MoviesContainer extends Component {
             return (
               <>
                 {
-                  this.state.movies.length > 0 ? <MovieShowPage movie={foundMovie} user={this.props.user} />
+                  this.state.movies.length > 0 ? <MovieShowPage routerProps={this.props.routerProps} movie={foundMovie} user={this.props.user} />
                     :
                   <h1>Loading</h1>
                 }
