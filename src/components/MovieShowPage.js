@@ -3,11 +3,12 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import Reviews from './Reviews'
 import React from 'react'
-
+import PopUp from './PopUp'
 
 const MovieShowPage = (props) => {
-
+  const [pop, setPop] = useState(false)
   const [input, setInput] = useState('')
+  const [message, setMessage] = useState('')
   const [reviews, setReviews] = useState([])
   const [formStatus, setFormStatus] = useState(false)
   const movie = props.movie
@@ -33,10 +34,11 @@ const MovieShowPage = (props) => {
       })
       .then(resp => resp.json())
       .then(movie => {
+        setPop(true)
         if(movie.message){
-          console.log(movie.message)
+          setMessage(movie.message)
         }else{
-          console.log(movie)
+          setMessage('purchased')
         }
       })
     }else{
@@ -77,7 +79,6 @@ const MovieShowPage = (props) => {
 
   return (
   <>
-  // <h1>Hello! Here are details for {movie.title}</h1>
   <hr/>
     <div>
       <div className="left">
@@ -105,6 +106,7 @@ const MovieShowPage = (props) => {
       <ol>{renderReviews()}</ol>
       {useLocation().state.purchased ? null : <button onClick={handlePurchase}>Buy Movie</button>}
       {useLocation().state.purchased ? <button onClick={handleReview}>Write Review</button> : null}
+      {pop? <><h1>{message}</h1> <button>X</button></> :null}
     {formStatus ?
       <form onSubmit={reviewSubmitHandler}>
         <input type="textarea" value={input} name='content' onChange={changeHandler}/>

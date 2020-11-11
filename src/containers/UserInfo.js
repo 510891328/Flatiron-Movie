@@ -16,7 +16,7 @@ export default class UserInfo extends React.Component {
   }
 
   editHandler = (id, content) => {
-    
+
     fetch(`http://localhost:3000/reviews/${id}`, {
       method: "PATCH",
       headers: {
@@ -36,7 +36,6 @@ export default class UserInfo extends React.Component {
   }
 
   deleteHandler = (id) => {
-    console.log(id);
     this.setState(()=>{
       return {reviews: this.state.reviews.filter(review => review.id !== id)}
     })
@@ -53,8 +52,6 @@ export default class UserInfo extends React.Component {
   }
 
   render(){
-    console.log(this.state.reviews)
-    console.log(this.props.user);
     return(
       <>
         <h1>UserInfo</h1>
