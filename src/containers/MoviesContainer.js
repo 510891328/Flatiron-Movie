@@ -21,7 +21,33 @@ class MoviesContainer extends Component {
   }
 
   renderMovies =  () => {
+    
     return this.state.movies.map(movie => {
+      return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
+    })
+  }
+
+  renderTopRated = () => {
+    let filteredBySearch = [...this.state.movies]
+    let fiveRated = filteredBySearch.sort((a,b) => a.imdb_rating < b.imdb_rating ? 1 : -1).slice(0, 5)
+    return fiveRated.map(movie => {
+      return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
+    })
+  }
+
+  renderNewest = () => {
+    let filteredBySearch = [...this.state.movies]
+
+    let fiveNewest = filteredBySearch.sort((a,b) => a.released < b.released ? 1 : -1).slice(0, 5)
+    return fiveNewest.map(movie => {
+      return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
+    })
+  }
+
+  renderLowestPrice = () => {
+    let filteredBySearch = [...this.state.movies]
+    let fiveLowest = filteredBySearch.sort((a,b) => a.price > b.price ? 1 : -1).slice(0, 5)
+    return fiveLowest.map(movie => {
       return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
     })
   }
@@ -53,14 +79,18 @@ class MoviesContainer extends Component {
         return newest.map(movie => {
           return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
         })
+
+        case "Price":
+          let price = filteredBySearch.sort((a,b) => a.price < b.price ? 1 : -1)
+          return price.map(movie => {
+            return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
+          })
         
       default:
         return filteredBySearch.map(movie => {
           return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
         })
     }
-    
-
   }
 
   searchHandler = (e) => {
@@ -75,7 +105,7 @@ class MoviesContainer extends Component {
   }
 
   render() {
-    console.log(this.state.sort)
+    
     return (
       
         <Switch>
@@ -112,6 +142,7 @@ class MoviesContainer extends Component {
                     <option value="Top Rated">Top Rated</option>
                     <option value="Newest">Newest</option>
                     <option value="Alphabetically">Alphabetically</option>
+                    <option value="Price">Price</option>
                   </select>
                 </label>
                 <hr />
@@ -124,11 +155,16 @@ class MoviesContainer extends Component {
           <Route path="/" render={() => {
             return (
               <div>
-                {this.state.movies.length > 0 ? this.renderMovies() : <h1>LOADING</h1>}
+                <h2>Top Rated</h2>
+                {this.state.movies.length > 0 ? this.renderTopRated() : <h1>LOADING</h1>}
+                <hr/>
+                <h2>Newest Releases</h2>
+                {this.state.movies.length > 0 ? this.renderNewest() : <h1>LOADING</h1>}
+                <h2>Best Deals</h2>
+                {this.state.movies.length > 0 ? this.renderLowestPrice() : <h1>LOADING</h1>}
               </div>
             )
-          }} />
-
+          }}/>
         </Switch>
       
     )

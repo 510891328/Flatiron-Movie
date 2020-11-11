@@ -8,9 +8,10 @@ const MovieCards = ({ movie, clickHandler, purchased }) => {
         <img src={movie.poster} alt={movie.title} />
         <h3>{movie.title}</h3>
         <p>
-          <span>{movie.released}</span>|
-          <span>{movie.imdb_rating}</span>|
-          <span>{movie.rated}</span>
+          <span>{movie.released}</span>||
+          <span>{movie.imdb_rating}</span>||
+          <span>{movie.rated}</span>||
+          <span>${movie.price}</span>
         </p>
       </NavLink>
   )

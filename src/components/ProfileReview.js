@@ -26,7 +26,7 @@ class ProfileReview extends React.Component {
   render() {
     return(
       <div>
-        {this.state.clicked ? <form onSubmit={this.handleSubmit}><input name="content" type="text-area" value={this.state.editContent} onChange={this.changeHandler}></input><button>Submit Change</button></form> : null}
+        {this.state.clicked ? <form onSubmit={this.handleSubmit}><input name="content" type="textarea" value={this.state.editContent} onChange={this.changeHandler}></input><button>Submit Change</button></form> : null}
         
         <span>{this.props.review.movie.title}:{this.props.review.content} created:{this.props.review.created_at}</span>
         <button onClick={this.formStatus}>Edit</button>

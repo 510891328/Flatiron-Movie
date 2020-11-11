@@ -17,6 +17,7 @@ const MovieShowPage = (props) => {
     fetch(`http://localhost:3000/movies/${movie.id}/reviews`)
     .then(resp => resp.json())
     .then(review => setReviews(review))
+    // eslint-disable-next-line 
   },[])
 
   const handlePurchase = () => {
@@ -84,6 +85,7 @@ const MovieShowPage = (props) => {
         {
           movie.awards === 'N/A'? null :<li> award:{movie.awards} </li>
         }
+        <li>Price: ${movie.price}</li>
         <li>Country: {movie.country}</li>
         <li>Directors: {movie.director}</li>
         <li>Writer: {movie.writer}</li>
@@ -100,7 +102,7 @@ const MovieShowPage = (props) => {
       {useLocation().state.purchased ? <button onClick={handleReview}>Write Review</button> : null}
     {formStatus ?
       <form onSubmit={reviewSubmitHandler}>
-        <input type="text-area" value={input} name='content' onChange={changeHandler}/>
+        <input type="textarea" value={input} name='content' onChange={changeHandler}/>
         <button type="submit">Submit Review</button>
       </form>
       :
