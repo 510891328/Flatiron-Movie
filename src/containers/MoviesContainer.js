@@ -38,7 +38,11 @@ class MoviesContainer extends Component {
   renderNewest = () => {
     let filteredBySearch = [...this.state.movies]
 
-    let fiveNewest = filteredBySearch.sort((a,b) => a.released < b.released ? 1 : -1).slice(0, 5)
+    let fiveNewest = filteredBySearch.sort((a,b) => {
+        let aDate = new Date(a.released)
+        let bDate = new Date(b.released)
+        return aDate < bDate ? 1 : -1
+      }).slice(0, 5)
     return fiveNewest.map(movie => {
       return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
     })
@@ -75,10 +79,14 @@ class MoviesContainer extends Component {
         })
 
       case "Newest":
-        let newest = filteredBySearch.sort((a,b) => a.released < b.released ? 1 : -1)
-        return newest.map(movie => {
-          return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
+        let fiveNewest = filteredBySearch.sort((a,b) => {
+          let aDate = new Date(a.released)
+          let bDate = new Date(b.released)
+          return aDate < bDate ? 1 : -1
         })
+      return fiveNewest.map(movie => {
+        return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
+      })
 
         case "Price":
           let price = filteredBySearch.sort((a,b) => a.price < b.price ? 1 : -1)
