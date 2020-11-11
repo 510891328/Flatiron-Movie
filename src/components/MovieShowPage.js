@@ -17,7 +17,7 @@ const MovieShowPage = (props) => {
     fetch(`http://localhost:3000/movies/${movie.id}/reviews`)
     .then(resp => resp.json())
     .then(review => setReviews(review))
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   },[])
 
   const handlePurchase = () => {
@@ -32,16 +32,21 @@ const MovieShowPage = (props) => {
         body: JSON.stringify( { movie: movie.id, token: user.jwt } )
       })
       .then(resp => resp.json())
-      .then(console.log)
+      .then(movie => {
+        if(movie.message){
+          console.log(movie.message)
+        }else{
+          console.log(movie)
+        }
+      })
     }else{
-      console.log('not signin');
+      console.log('Not SignIn');
     }
   }
 
   const handleReview = () => {
     setFormStatus(!formStatus)
     console.log(formStatus)
-
   }
 
   const changeHandler = (e) => {
@@ -72,26 +77,26 @@ const MovieShowPage = (props) => {
 
   return (
   <>
-  <h1>Hello! Here are details for {movie.title}</h1>
+  // <h1>Hello! Here are details for {movie.title}</h1>
   <hr/>
     <div>
       <div className="left">
         <h3>{movie.title}</h3>
         <img alt="" src={movie.poster} />
       </div>
-      <ul className="right">
-        <li>Plot: {movie.plot}</li>
-        <li>Actor: {movie.actors}</li>
+      <ul className="right margin-li">
+        <li>Plot: <span className="detail">{movie.plot}</span></li>
+        <li>Actor: <span className="detail">{movie.actors}</span></li>
         {
-          movie.awards === 'N/A'? null :<li> award:{movie.awards} </li>
+          movie.awards === 'N/A'? null :<li> award:<span className="detail">{movie.awards}</span> </li>
         }
-        <li>Price: ${movie.price}</li>
-        <li>Country: {movie.country}</li>
-        <li>Directors: {movie.director}</li>
-        <li>Writer: {movie.writer}</li>
-        <li>Runtime: {movie.runtime}</li>
-        <li>Released Date: {movie.released}</li>
-        <li>Genre: {movie.genre}</li>
+        <li>Price: <span className="detail">${movie.price}</span></li>
+        <li>Country: <span className="detail">{movie.country}</span></li>
+        <li>Directors: <span className="detail">{movie.director}</span></li>
+        <li>Writer: <span className="detail">{movie.writer}</span></li>
+        <li>Runtime: <span className="detail">{movie.runtime}</span></li>
+        <li>Released Date: <span className="detail">{movie.released}</span></li>
+        <li>Genre: <span className="detail">{movie.genre}</span></li>
         {
           movie.metascore === 'N/A' ? null : <li>Metascore: {movie.metascore}/100</li>
         }

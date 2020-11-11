@@ -21,7 +21,7 @@ class MoviesContainer extends Component {
   }
 
   renderMovies =  () => {
-    
+
     return this.state.movies.map(movie => {
       return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
     })
@@ -58,7 +58,7 @@ class MoviesContainer extends Component {
 
   displayMovies = () => {
     let filteredBySearch = [...this.state.movies]
-    
+
     if (this.state.searchValue !== "") {
       return filteredBySearch.filter(el => el.title.toLowerCase().includes(this.state.searchValue.toLowerCase())).map(movie => {
         return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
@@ -71,7 +71,7 @@ class MoviesContainer extends Component {
         return alpha.map(movie => {
           return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
         })
-        
+
       case "Top Rated":
         let rated = filteredBySearch.sort((a,b) => a.imdb_rating < b.imdb_rating ? 1 : -1)
         return rated.map(movie => {
@@ -93,7 +93,7 @@ class MoviesContainer extends Component {
           return price.map(movie => {
             return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
           })
-        
+
       default:
         return filteredBySearch.map(movie => {
           return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
@@ -113,9 +113,9 @@ class MoviesContainer extends Component {
   }
 
   render() {
-    
+
     return (
-      
+
         <Switch>
           <Route path="/movies/:id" render={(routerProps) => {
             let id = parseInt(routerProps.match.params.id)
@@ -155,7 +155,9 @@ class MoviesContainer extends Component {
                 </label>
                 <hr />
                 <br/>
+                <div class="cardContainer">
                 {this.state.movies.length > 0 ? this.displayMovies() : <h1>LOADING</h1>}
+                </div>
               </div>
             )
           }}/>
@@ -174,7 +176,7 @@ class MoviesContainer extends Component {
             )
           }}/>
         </Switch>
-      
+
     )
   }
 }

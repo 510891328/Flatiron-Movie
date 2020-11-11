@@ -2,8 +2,9 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const MovieCards = ({ movie, clickHandler, purchased }) => {
-  
+
   return (
+      <div class="card">
       <NavLink to={ { pathname:`/movies/${movie.id}`, state:{purchased: purchased} }}>
         <img src={movie.poster} alt={movie.title} />
         <h3>{movie.title}</h3>
@@ -14,6 +15,7 @@ const MovieCards = ({ movie, clickHandler, purchased }) => {
           <span>${movie.price}</span>
         </p>
       </NavLink>
+      </div>
   )
 }
 

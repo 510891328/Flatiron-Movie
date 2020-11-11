@@ -1,12 +1,26 @@
 body {
   background-image: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
-  background-size: 100% auto; 
+  background-size: 100% auto;
   background-repeat: repeat-y;
   color: white;
-  
+}
+a {
+  text-decoration: none;
 }
 
-a:link,a:visited { 
+li {
+  list-style: none;
+}
+
+.margin-li li{
+  margin-bottom: 10px;
+}
+
+.margin-li li span.detail{
+  color:rgb(122, 117, 124)
+}
+
+a:link,a:visited {
   color: white
 }
 
@@ -16,4 +30,41 @@ a:link,a:visited {
 }
 .right{
   float:right;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card{
+  float:left;
+  width: 17%;
+  margin: 1%;
+  transition: 1s;
+}
+
+.card:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.card img{
+  width:100%;
+}
+
+.navbar {
+  margin: 10px;
+}
+
+.navbar a {
+  cursor: pointer;
+}
+
+.nav-item {
+  margin: 3px 10px;
+  font-size: 20pt;
 }

@@ -9,18 +9,18 @@ const NavBar = (props) => {
 
   return (
     <div className="navbar">
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/movies">Movies</NavLink>
+      <NavLink to="/" className="nav-item">Home</NavLink>
+      <NavLink to="/movies" className="nav-item">Movies</NavLink>
       {
         props.user ?
         <>
-        <NavLink to="/profile">Profile</NavLink>
-        <NavLink to="/" onClick={logOutHandler}>Log Out</NavLink>
+        <NavLink to="/profile" className="nav-item">Profile</NavLink>
+        <NavLink to="/" onClick={logOutHandler} className="nav-item">Log Out</NavLink>
         </>
         :
       <>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/login" className="nav-item">Login</NavLink>
+        <NavLink to="/signup" className="nav-item">Sign Up</NavLink>
       </>
       }
     </div>
