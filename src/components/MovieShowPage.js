@@ -56,7 +56,7 @@ const MovieShowPage = (props) => {
 
   const handleReview = () => {
     setFormStatus(!formStatus)
-  
+
   }
 
   const changeHandler = (e) => {
@@ -91,33 +91,39 @@ const MovieShowPage = (props) => {
   <>
   {clicked ? <PopUp routerProps={props.routerProps} user={user} message={message} closePopUp={closePopUp}/> : null}
   <hr/>
-    <div>
-      <div className="left">
-        <h3>{movie.title}</h3>
+  <div className="center-item">
+    <h1 className="title-color">{movie.title}</h1>
+  </div>
+
+    <div className="wrappers">
+      <div>
         <img alt="" src={movie.poster} />
       </div>
-      <ul className="right margin-li">
-        <li>Plot: <span className="detail">{movie.plot}</span></li>
-        <li>Actor: <span className="detail">{movie.actors}</span></li>
+      <div className="detailShow">
+      <ul className="margin-li">
+        <li><span className="title-color">Plot:</span> <span className="detail">{movie.plot}</span></li>
+        <li><span className="title-color">Actor:</span> <span className="detail">{movie.actors}</span></li>
         {
-          movie.awards === 'N/A'? null :<li> award:<span className="detail">{movie.awards}</span> </li>
+          movie.awards === 'N/A'? null :<li> <span className="title-color">Award:</span> <span className="detail">{movie.awards}</span> </li>
         }
-        <li>Price: <span className="detail">${movie.price}</span></li>
-        <li>Country: <span className="detail">{movie.country}</span></li>
-        <li>Directors: <span className="detail">{movie.director}</span></li>
-        <li>Writer: <span className="detail">{movie.writer}</span></li>
-        <li>Runtime: <span className="detail">{movie.runtime}</span></li>
-        <li>Released Date: <span className="detail">{movie.released}</span></li>
-        <li>Genre: <span className="detail">{movie.genre}</span></li>
+        <li><span className="title-color">Price:</span> <span className="detail">${movie.price}</span></li>
+        <li><span className="title-color">Country:</span> <span className="detail">{movie.country}</span></li>
+        <li><span className="title-color">Directors:</span> <span className="detail">{movie.director}</span></li>
+        <li><span className="title-color">Writer:</span> <span className="detail">{movie.writer}</span></li>
+        <li><span className="title-color">Runtime:</span> <span className="detail">{movie.runtime}</span></li>
+        <li><span className="title-color">Released Date:</span> <span className="detail">{movie.released}</span></li>
+        <li><span className="title-color">Genre:</span> <span className="detail">{movie.genre}</span></li>
+        <li><span className="title-color">Imdb_rating:</span> <span className="detail">{movie.imdb_rating}</span></li>
         {
-          movie.metascore === 'N/A' ? null : <li>Metascore: {movie.metascore}/100</li>
+          movie.metascore === 'N/A' ? null : <li><span className="title-color">Metascore:</span> <span className="detail">{movie.metascore}/100</span></li>
         }
       </ul>
-      <h1>Reviews</h1>
-      <ol>{renderReviews()}</ol>
-      {useLocation().state.purchased ? null : <button onClick={handlePurchase}>Buy Movie</button>}
-      {useLocation().state.purchased ? <button onClick={handleReview}>Write Review</button> : null}
-      
+      </div>
+    </div>
+    <div className="clear center-item price"><span className="title-color">Price:</span> <span className="detail">${movie.price}</span></div>
+    <div className="clear center-item">
+    {useLocation().state.purchased ? null : <button className="block-button" onClick={handlePurchase}>Buy Movie</button>}
+    {useLocation().state.purchased ? <button className="block-button" onClick={handleReview}>Write Review</button> : null}
     {formStatus ?
       <form onSubmit={reviewSubmitHandler}>
         <input type="textarea" value={input} name='content' onChange={changeHandler}/>
@@ -126,6 +132,10 @@ const MovieShowPage = (props) => {
       :
       null
     }
+    </div>
+    <div className="margin">
+      <h1>Reviews</h1>
+      <ol class="review">{renderReviews()}</ol>
     </div>
 
   </>

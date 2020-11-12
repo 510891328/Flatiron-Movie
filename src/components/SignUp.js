@@ -21,6 +21,7 @@ export default class SignUp extends React.Component {
 
   render(){
     return(
+    <div className="form-wrapper">
       <form onSubmit={this.handleSubmit}>
         <label>Username:
           <input value={this.state.username} name="username" type="text" placeholder="username" onChange={this.handleChange}></input>
@@ -33,6 +34,7 @@ export default class SignUp extends React.Component {
         </label><br/>
         <button type="submit">Sign Up</button>
       </form>
+    </div>
     )
   }
 }

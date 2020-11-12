@@ -3,7 +3,7 @@ import MoviesContainer from './MoviesContainer'
 
 const HomePage = (props) => {
   return (
-    <div>
+    <div className="margin">
       <h1>
         Welcome to MovieSpace!
       </h1>

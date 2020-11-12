@@ -1,4 +1,4 @@
-  
+
 import React from 'react'
 
 const Search = props => {
@@ -8,8 +8,9 @@ const Search = props => {
   }
 
   return (
-    <div className="ui search">
-      <div className="ui icon input">
+    <div className="search">
+      <div className="input">
+        <strong>Search Movie by Title: </strong>
         <input value={props.searchValue} onChange={handleSearch}className="prompt"/>
         <i className="search icon" />
       </div>

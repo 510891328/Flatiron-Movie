@@ -21,7 +21,6 @@ class MoviesContainer extends Component {
   }
 
   renderMovies =  () => {
-
     return this.state.movies.map(movie => {
       return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
     })
@@ -113,7 +112,7 @@ class MoviesContainer extends Component {
   }
 
   render() {
-  
+
     return (
 
         <Switch>
@@ -138,23 +137,21 @@ class MoviesContainer extends Component {
             return (
               <div>
                 <hr />
-                <br/>
-                <strong>Search Movie by Title:</strong>
                 <Search searchHandler={this.searchHandler} searchValue={this.state.searchValue}/>
                 <hr />
-                <br/>
-                <label>
-                  <strong>Sort Movies By:</strong>
-                  <select value={this.state.sort} onChange={(e)=>this.updateSort(e.target.value)}>
-                    <option value="All">All</option>
-                    <option value="Top Rated">Top Rated</option>
-                    <option value="Newest">Newest</option>
-                    <option value="Alphabetically">Alphabetically</option>
-                    <option value="Price">Price</option>
-                  </select>
-                </label>
+                <div class="search">
+                  <label>
+                    <strong>Sort Movies By: </strong>
+                    <select value={this.state.sort} onChange={(e)=>this.updateSort(e.target.value)}>
+                      <option value="All">All</option>
+                      <option value="Top Rated">Top Rated</option>
+                      <option value="Newest">Newest</option>
+                      <option value="Alphabetically">Alphabetically</option>
+                      <option value="Price">Price</option>
+                    </select>
+                  </label>
+                </div>
                 <hr />
-                <br/>
                 <div class="cardContainer">
                 {this.state.movies.length > 0 ? this.displayMovies() : <h1>LOADING</h1>}
                 </div>
@@ -166,17 +163,22 @@ class MoviesContainer extends Component {
             return (
               <div>
                 <h2>Top Rated</h2>
-                {this.state.movies.length > 0 ? this.renderTopRated() : <h1>LOADING</h1>}
-                <hr/>
-                <h2>Newest Releases</h2>
-                {this.state.movies.length > 0 ? this.renderNewest() : <h1>LOADING</h1>}
-                <h2>Best Deals</h2>
-                {this.state.movies.length > 0 ? this.renderLowestPrice() : <h1>LOADING</h1>}
+                <div class="cardContainer">
+                  {this.state.movies.length > 0 ? this.renderTopRated() : <h1>LOADING</h1>}
+                </div>
+                  <hr/>
+                  <h2>Newest Releases</h2>
+                <div class="cardContainer">
+                  {this.state.movies.length > 0 ? this.renderNewest() : <h1>LOADING</h1>}
+                </div>
+                  <h2>Best Deals</h2>
+                <div class="cardContainer">
+                  {this.state.movies.length > 0 ? this.renderLowestPrice() : <h1>LOADING</h1>}
+                </div>
               </div>
             )
           }}/>
         </Switch>
-
     )
   }
 }

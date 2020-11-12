@@ -3,19 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Popup from 'react-popup';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Popup className="mm-popup"
-    btnClass="mm-popup__btn"
-    closeBtn={true}
-    closeHtml={null}
-    defaultOk="Ok"
-    defaultCancel="Cancel"
-    wildClasses={false}
-    escToClose={true}
-    />
     <App />
   </React.StrictMode>,
   document.getElementById('root')

@@ -34,15 +34,16 @@ li {
   border-radius: 20px;
 }
 
-
-
+.margin-li{
+  font-size: 1.1em;
+}
 
 .margin-li li{
   margin-bottom: 10px;
 }
 
 .margin-li li span.detail{
-  color:rgb(122, 117, 124)
+  color:white;
 }
 
 a:link,a:visited {
@@ -70,6 +71,7 @@ a:link,a:visited {
   width: 17%;
   margin: 1%;
   transition: 1s;
+  background-color: #dbaf2b;
 }
 
 .card:hover{
@@ -83,6 +85,8 @@ a:link,a:visited {
 
 .navbar {
   margin: 10px;
+  display:flex;
+  justify-content: space-around;
 }
 
 .navbar a {
@@ -90,6 +94,124 @@ a:link,a:visited {
 }
 
 .nav-item {
+  font-weight: bold;
+  border: 3px ridge #dbaf2b;
   margin: 3px 10px;
-  font-size: 20pt;
+  font-size: 24pt;
+  padding: 10px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.detailShow{
+  margin: 20px;
+}
+
+.wrappers{
+  display:flex;
+  margin: 20px;
+}
+
+.user-info{
+  clear:both;
+  margin: 20px;
+}
+
+.h1pad{
+  margin: 20px;
+}
+
+.review{
+  clear:both;
+}
+
+.clear{
+  clear:both;
+}
+.margin{
+  margin:20px;
+}
+
+.block-button{
+  display: block;
+  width: 50%;
+  height: 40px;
+  font-size: 1.5em;
+  background-color: rgb(200, 160, 74);
+}
+
+.center-item{
+  display:flex;
+  justify-content: center
+}
+
+.title-color{
+  font-weight:bold;
+  color: rgb(200, 160, 74)
+}
+
+.imdb_rating{
+  display: flex;
+}
+.imdb_rating img {
+  width: 24px;
+}
+
+.card-detail{
+  margin: 10px;
+}
+
+.price{
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.form-wrapper {
+  border-radius: 5px;
+  background-color: rgb(200, 160, 74);
+  padding: 20px;
+  width: 300px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input[type=text] {
+  display: block;
+  margin:10px 10px 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=password] {
+  display: block;
+  margin:10px 10px 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-wrapper label {
+  color:black
+}
+
+
+.form-wrapper button{
+  display: block;
+  margin:30px 10px 10px 0;
+  width: 100%;
+  background-color: transparent;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
