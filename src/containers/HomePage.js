@@ -4,10 +4,9 @@ import MoviesContainer from './MoviesContainer'
 const HomePage = (props) => {
 
 
-
   return (
-    <div className="margin">
-      <h1>
+    <div className="margin " >
+      <h1 className="background-best">
         {props.user ? `Hello ${props.user.user.name} Welcome to MovieSpace!` : "Welcome to MovieSpace!" }
       </h1>
       <hr/>

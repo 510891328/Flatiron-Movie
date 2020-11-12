@@ -28,7 +28,9 @@ class MoviesContainer extends Component {
 
   renderTopRated = () => {
     let filteredBySearch = [...this.state.movies]
-    let fiveRated = filteredBySearch.sort((a,b) => a.imdb_rating < b.imdb_rating ? 1 : -1).slice(0, 5)
+    
+    let fiveRated = filteredBySearch.sort((a,b) => a.imdb_rating < b.imdb_rating ? 1 : -1).filter(movie => movie.imdb_rating !== "N/A").slice(0, 5)
+    
     return fiveRated.map(movie => {
       return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
     })
@@ -72,7 +74,7 @@ class MoviesContainer extends Component {
         })
 
       case "Top Rated":
-        let rated = filteredBySearch.sort((a,b) => a.imdb_rating < b.imdb_rating ? 1 : -1)
+        let rated = filteredBySearch.sort((a,b) => a.imdb_rating < b.imdb_rating ? 1 : -1).filter(movie => movie.imdb_rating !== "N/A")
         return rated.map(movie => {
           return <MovieCards key={movie.id} movie={movie} clickHandler={this.clickHandler}/>
         })
@@ -162,17 +164,17 @@ class MoviesContainer extends Component {
           <Route path="/" render={() => {
             return (
               <div>
-                <h2>Top Rated</h2>
+                <h2 className="background-best" >Top Rated</h2>
                 <div class="cardContainer">
                   {this.state.movies.length > 0 ? this.renderTopRated() : <h1>LOADING</h1>}
                 </div>
                   <hr/>
-                  <h2>Newest Releases</h2>
+                  <h2 className="background-best" >Newest Releases</h2>
                 <div class="cardContainer">
                   {this.state.movies.length > 0 ? this.renderNewest() : <h1>LOADING</h1>}
                 </div>
                   <hr/>
-                  <h2>Best Deals</h2>
+                  <h2 className="background-best">Best Deals</h2>
                 <div class="cardContainer">
                   {this.state.movies.length > 0 ? this.renderLowestPrice() : <h1>LOADING</h1>}
                 </div>

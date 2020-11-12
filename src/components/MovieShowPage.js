@@ -102,7 +102,7 @@ const MovieShowPage = (props) => {
       <div className="detailShow">
       <ul className="margin-li">
         <li><span className="title-color">Plot:</span> <span className="detail">{movie.plot}</span></li>
-        <li><span className="title-color">Actor:</span> <span className="detail">{movie.actors}</span></li>
+        <li><span className="title-color">Actors:</span> <span className="detail">{movie.actors}</span></li>
         {
           movie.awards === 'N/A'? null :<li> <span className="title-color">Award:</span> <span className="detail">{movie.awards}</span> </li>
         }
