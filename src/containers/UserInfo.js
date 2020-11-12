@@ -54,7 +54,7 @@ export default class UserInfo extends React.Component {
   render(){
     return(
       <>
-        <h1>UserInfo</h1>
+        <h2>Your Authored Reviews</h2>
         {this.renderReviews()}
       </>
     )

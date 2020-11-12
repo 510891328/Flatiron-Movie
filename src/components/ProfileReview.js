@@ -25,12 +25,15 @@ class ProfileReview extends React.Component {
 
   render() {
     return(
-      <div>
-        {this.state.clicked ? <form onSubmit={this.handleSubmit}><input name="content" type="textarea" value={this.state.editContent} onChange={this.changeHandler}></input><button>Submit Change</button></form> : null}
-        
-        <span>{this.props.review.movie.title}:{this.props.review.content} created:{this.props.review.created_at}</span>
-        <button onClick={this.formStatus}>Edit</button>
-        <button onClick={() => {this.props.deleteHandler(this.props.review.id)} }>Delete</button>
+      <div className="reviewContainer">
+        {this.state.clicked ? <form className="editForm" onSubmit={this.handleSubmit}><input name="content" type="textarea" value={this.state.editContent} onChange={this.changeHandler}></input><button>Submit Change</button></form> : null}
+        <div className='singleReview reviewTitle'>{this.props.review.movie.title}:</div>
+        <div className='singleReview reviewContent'>{this.props.review.content}</div>
+        <div className='singleReview reviewCreated'>created:{this.props.review.created_at}</div>
+        <div className='singleReview reviewButtons'>
+          <button onClick={this.formStatus}>Edit</button>
+          <button onClick={() => {this.props.deleteHandler(this.props.review.id)} }>Delete</button>
+        </div>
       </div>
     )
   }

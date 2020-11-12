@@ -8,10 +8,10 @@ const MovieCards = ({ movie, clickHandler, purchased }) => {
       <NavLink to={ { pathname:`/movies/${movie.id}`, state:{purchased: purchased} }}>
         <img src={movie.poster} alt={movie.title} />
         <div class="card-detail">
-        <h3>Title: {movie.title}</h3>
+        <h4 style={{textAlign: "center"}}>{movie.title}</h4>
           <div>Released Date: {movie.released}</div>
-          <div className="imdb_rating"><img src={imdb} alt=""/>{movie.imdb_rating}</div>
-          <div>Movie Rated: {movie.rated}</div>
+          <div className="imdb_rating">IMDB-Rating {movie.imdb_rating} <img src= {imdb} alt=""/></div>
+          <div>MPA Rating: {movie.rated}</div>
           <div>Price: ${movie.price}</div>
         </div>
       </NavLink>

@@ -6,10 +6,10 @@ const PopUp = (props) => {
   const buttonDisplay = () => {
     if (!props.user){
       return(
-        <>
+        <div className="popUpButton">
           <button onClick={() => clickHandler('login')}>Log in</button>
           <button onClick={() => clickHandler('signup')}>Sign up</button>
-        </>
+        </div>
       ) 
     } else {
       return null

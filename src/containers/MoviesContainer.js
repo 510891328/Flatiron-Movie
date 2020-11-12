@@ -171,6 +171,7 @@ class MoviesContainer extends Component {
                 <div class="cardContainer">
                   {this.state.movies.length > 0 ? this.renderNewest() : <h1>LOADING</h1>}
                 </div>
+                  <hr/>
                   <h2>Best Deals</h2>
                 <div class="cardContainer">
                   {this.state.movies.length > 0 ? this.renderLowestPrice() : <h1>LOADING</h1>}

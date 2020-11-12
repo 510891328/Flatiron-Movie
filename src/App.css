@@ -13,14 +13,15 @@ li {
 }
 
 .modal-mask {
-  background-color: #60606060;
+  background-color: #131313c6;
   position: absolute;
   height: 100vh;
   width: 100vw;
 }
 
 .modal-thing {
-  background-color: #503010;
+  background-color: #dbaf2b;
+  color: black;
   width: 300px;
   height: 300px;
   position: absolute;
@@ -52,7 +53,6 @@ a:link,a:visited {
 
 .left{
   display:inline-block;
-  float: left;
 }
 .right{
   float:right;
@@ -67,10 +67,10 @@ a:link,a:visited {
 }
 
 .card{
-  float:left;
+  float: left;
   width: 17%;
   margin: 1%;
-  transition: 1s;
+  transition : 1s;
   background-color: #dbaf2b;
 }
 
@@ -214,4 +214,64 @@ input[type=password] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.reviewContainer {
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.65);
+  
+}
+
+.singleReview {
+  display: block;
+  margin: 20px;
+  clear: both;
+
+}
+
+.reviewTitle {
+  color: rgb(200, 160, 74);
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.reviewContent{
+  color: white;
+}
+
+.reviewCreated {
+  color: gray
+}
+
+.reviewButtons button {
+  margin-left: 10%;
+  border-radius: 5px;
+  background-color: rgb(200, 160, 74)
+}
+
+.reviewUser {
+  color: rgb(200, 160, 74);
+  font-weight: bold;
+  margin: 20px;
+}
+
+.editForm button{
+  margin-left: 10%;
+  border-radius: 5px;
+  background-color: rgb(200, 160, 74)
+}
+
+.popUpButton button{
+  margin: 15%;
+  border-radius: 5px;
+  background-color: rgb(200, 160, 74)
+}
+
+.popUpButton {
+  margin: 5px;
+
 }

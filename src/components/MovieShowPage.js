@@ -135,7 +135,7 @@ const MovieShowPage = (props) => {
     </div>
     <div className="margin">
       <h1>Reviews</h1>
-      <ol class="review">{renderReviews()}</ol>
+      {renderReviews()}
     </div>
 
   </>

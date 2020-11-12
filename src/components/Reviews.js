@@ -3,9 +3,9 @@ import React from 'react'
 const Reviews = ({review}) => {
   
   return (
-    <li>
-      By {review.user}: {review.content}
-    </li>
+    <div className="reviewContainer">
+      <div className="reviewUser">By {review.user}:</div> <div className="reviewContent">{review.content}</div>
+    </div>
   )
 }
 
